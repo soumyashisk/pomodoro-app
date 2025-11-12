@@ -13,7 +13,7 @@ A simple and elegant Pomodoro timer application built with ReactLynx.
 
 This is a ReactLynx project bootstrapped with `create-rspeedy`.
 
-## Getting Startedkk
+## Getting Started
 
 First, install the dependencies:
 

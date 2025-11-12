@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "@lynx-js/react";
 
 import "./App.css";
-import timerEndSound from "./assets/timer-end.mp3";
 
-const WORK_DURATION = 25 * 60; // 25 minutes in seconds
-const SHORT_BREAK = 5 * 60; // 5 minutes in seconds
-const LONG_BREAK = 15 * 60; // 15 minutes
+const WORK_DURATION = 25 * 60;
+const SHORT_BREAK = 5 * 60;
+const LONG_BREAK = 15 * 60;
 
 type TimerMode = "work" | "shortBreak" | "longBreak";
 
@@ -16,7 +15,6 @@ export function App() {
   const [completedPomodoros, setCompletedPomodoros] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadedStyle = { opacity: isCompleted ? 0 : 1 };
   const rippleOffsets = [0, 0.8, 1.6];
 
@@ -109,39 +107,6 @@ export function App() {
       }
     };
   }, [isRunning, timeLeft, mode]);
-
-  useEffect(() => {
-    if (audioRef.current || typeof Audio === "undefined") {
-      return () => {};
-    }
-
-    const audio = new Audio(timerEndSound);
-    audio.loop = true;
-    audio.preload = "auto";
-    audioRef.current = audio;
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-      audioRef.current = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
-
-    if (isCompleted) {
-      audio.play().catch(() => {
-        // playback might be blocked by interaction policies; ignore
-      });
-    } else {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-  }, [isCompleted]);
 
   return (
     <view className={isCompleted ? "container completed" : "container"}>

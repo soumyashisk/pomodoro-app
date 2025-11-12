@@ -4,7 +4,7 @@ import "./App.css";
 import timerEndSound from "./assets/timer-end.mp3";
 
 const WORK_DURATION = 25 * 60; // 25 minutes in seconds
-const SHORT_BREAK = 1; // 5 minutes in seconds
+const SHORT_BREAK = 5 * 60; // 5 minutes in seconds
 const LONG_BREAK = 15 * 60; // 15 minutes
 
 type TimerMode = "work" | "shortBreak" | "longBreak";

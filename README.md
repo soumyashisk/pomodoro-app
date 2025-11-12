@@ -1,8 +1,19 @@
+# Minimal Pomodoro App
+
+A simple and elegant Pomodoro timer application built with ReactLynx.
+
+## Screenshots
+
+<div style="display: flex; gap: 10px;">
+  <img src="./screenshots/set timer.jpg" alt="Set Timer Screen" width="300"/>
+  <img src="./screenshots/dismiss timer.jpg" alt="Dismiss Timer Screen" width="300"/>
+</div>
+
 ## Rspeedy project
 
 This is a ReactLynx project bootstrapped with `create-rspeedy`.
 
-## Getting Started
+## Getting Startedkk
 
 First, install the dependencies:
 
